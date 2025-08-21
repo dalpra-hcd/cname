@@ -12,10 +12,7 @@ fn walk(node: tree_sitter::Node, source: &str) {
     }
 }
 
-
-
-fn main()
-{
+fn main() {
     let mut parser = Parser::new();
     parser
         .set_language(&tree_sitter_c::LANGUAGE.into())
