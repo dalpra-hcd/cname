@@ -18,7 +18,7 @@ fn main() {
         .set_language(&tree_sitter_c::LANGUAGE.into())
         .expect("Error loading C grammar");
 
-    let mut source_code = r#"
+    let source_code = r#"
         int my_var = 0;
         void BadFunctionName() {}
     "#;
