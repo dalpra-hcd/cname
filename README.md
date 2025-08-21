@@ -17,7 +17,7 @@ cargo build
 To run:
 
 ```console
-cargo run
+cargo run -- --name World --count 3
 ```
 
 To fix formatting/linting errors:

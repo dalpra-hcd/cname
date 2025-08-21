@@ -1,5 +1,18 @@
 use serde::{Deserialize, Serialize};
-use tree_sitter::Parser;
+use tree_sitter::Parser as TsParser;
+use clap::Parser as ClapParser;
+
+#[derive(ClapParser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args {
+    /// Name of the person to greet
+    #[arg(short, long)]
+    name: String,
+
+    /// Number of times to greet
+    #[arg(short, long, default_value_t = 1)]
+    count: u8,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Point {
@@ -20,6 +33,12 @@ fn walk(node: tree_sitter::Node, source: &str) {
 }
 
 fn main() {
+    let args = Args::parse();
+
+    for _ in 0..args.count {
+        println!("Hello {}!", args.name);
+    }
+
     let point = Point { x: 1, y: 2 };
 
     let serialized = toml::to_string(&point).unwrap();
@@ -28,7 +47,7 @@ fn main() {
     let deserialized: Point = toml::from_str(&serialized).unwrap();
     println!("deserialized = {deserialized:?}");
 
-    let mut parser = Parser::new();
+    let mut parser = TsParser::new();
     parser
         .set_language(&tree_sitter_c::LANGUAGE.into())
         .expect("Error loading C grammar");
