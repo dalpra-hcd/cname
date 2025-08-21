@@ -1,6 +1,6 @@
+use clap::Parser as ClapParser;
 use serde::{Deserialize, Serialize};
 use tree_sitter::Parser as TsParser;
-use clap::Parser as ClapParser;
 
 #[derive(ClapParser, Debug)]
 #[command(version, about, long_about = None)]

@@ -7,6 +7,13 @@
             "command": "cargo clippy --fix --allow-dirty -- -W clippy::pedantic",
             "group": "build",
             "problemMatcher": []
+        },
+        {
+            "label": "format",
+            "type": "shell",
+            "command": "cargo fmt",
+            "group": "build",
+            "problemMatcher": []
         }
     ]
 }
