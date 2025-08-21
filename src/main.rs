@@ -12,13 +12,16 @@ fn walk(node: tree_sitter::Node, source: &str) {
     }
 }
 
-fn main() {
+
+
+fn main()
+{
     let mut parser = Parser::new();
     parser
         .set_language(&tree_sitter_c::LANGUAGE.into())
         .expect("Error loading C grammar");
 
-    let source_code = r#"
+    let mut source_code = r#"
         int my_var = 0;
         void BadFunctionName() {}
     "#;
