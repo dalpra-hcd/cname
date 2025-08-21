@@ -1,4 +1,11 @@
+use serde::{Deserialize, Serialize};
 use tree_sitter::Parser;
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Point {
+    x: i32,
+    y: i32,
+}
 
 fn walk(node: tree_sitter::Node, source: &str) {
     if node.kind() == "identifier" {
@@ -13,6 +20,14 @@ fn walk(node: tree_sitter::Node, source: &str) {
 }
 
 fn main() {
+    let point = Point { x: 1, y: 2 };
+
+    let serialized = toml::to_string(&point).unwrap();
+    println!("serialized = {serialized}");
+
+    let deserialized: Point = toml::from_str(&serialized).unwrap();
+    println!("deserialized = {deserialized:?}");
+
     let mut parser = Parser::new();
     parser
         .set_language(&tree_sitter_c::LANGUAGE.into())
