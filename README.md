@@ -1,5 +1,8 @@
 # cname
 
+![CI](https://github.com/campbellmbrown/cname/actions/workflows/pipeline.yml/badge.svg?branch=main)
+![docs](https://app.readthedocs.org/projects/cname/badge/?version=latest)
+
 ## Dependencies
 
 - [rust/cargo](https://www.rust-lang.org/learn/get-started)
