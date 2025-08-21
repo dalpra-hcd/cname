@@ -20,9 +20,9 @@ To run:
 cargo run
 ```
 
-To format/lint:
+To fix formatting/linting errors:
 
 ```console
 cargo fmt
-cargo clippy
+cargo clippy --fix --allow-dirty -- -W clippy::pedantic
 ```
